@@ -1,4 +1,5 @@
-#ENCONDIN - Run Length Encoding
+ENCONDIN - Run Length Encoding
+==============================
 
 http://www.spoj.com/problems/ENCONDIN/
 
@@ -8,20 +9,24 @@ Any sequence of between 2 to 9 identical characters is encoded by two characters
 
 Any sequence of characters that does not contain consecutive repetitions of any characters is represented by a 1 character followed by the sequence of characters, terminated with another 1. If a 1 appears as part of the sequence, it is escaped with a 1, thus two 1 characters are output.
 
-##Input Specification
+Input Specification
+-------------------
 
 The input consists of letters (both upper- and lower-case), digits, spaces, and punctuation. Every line is terminated with a newline character and no other characters appear in the input.
 
-##Output Specification
+Output Specification
+--------------------
 
 Each line in the input is encoded separately as described above. The newline at the end of each line is not encoded, but is passed directly to the output.
 
-##Sample Input
+Sample Input
+------------
 
     AAAAAABCCCC
     12344
 
-##Sample Output
+Sample Output
+-------------
 
     6A1B14C
     11123124
