@@ -1,0 +1,2 @@
+# Encodin
+Run length encoding
