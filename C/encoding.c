@@ -42,24 +42,27 @@ int encode(char *srce, char *dest) {
     char last = '\0';
     char count;
     while(*srce != '\n') {
-        if (*srce == last) {
+        if (*srce != last) {
+            last = *srce;
+            if (count > 0) {
+                *dest++ = count + '0';
+                *dest++ = last;
+            }
+            count = 0;
+        } else {
             if(count == 9) {
                 *dest++ = count + '0';
                 *dest++ = last;
                 count = 0;
             }
-            count++;
-        } else {
-            last = *srce;
-            count = 1;
         }
+        count++;
         srce++;
     }
-    if(count > 0) {
-        *dest++ = count + '0';
-        *dest++ = last;
-    }
+    *dest++ = count + '0';
+    *dest++ = last;
     *dest++ = '\n';
+    *dest++ = '\0';
     return 0;
 }
 

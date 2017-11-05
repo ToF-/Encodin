@@ -28,3 +28,16 @@ AAAAAAAAAA
 ----
 reset count to 0 instead of 1
 
+----
+AAAAAAAAA
+9A1A
+
+4
+A
+AAAAA
+5A
+A
+
+refactoring if statement broke the program
+----
+some garbage in the dest, put a \0 in the end
