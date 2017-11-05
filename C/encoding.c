@@ -39,19 +39,22 @@ int run_all_tests() {
 }
     
 int encode(char *srce, char *dest) {
-    char last = -1;
-    int  count = 0;
-    while(*srce != '\0') {
+    char last = '\0';
+    char count;
+    while(*srce != '\n') {
         if (*srce == last) {
             count++;
         } else {
-            *dest++ = count + '0';
-            *dest++ = last;
             last = *srce;
+            count = 1;
         }
         srce++;
     }
-    *dest++ = '\0';
+    if(count > 0) {
+        *dest++ = count + '0';
+        *dest++ = last;
+    }
+    *dest++ = '\n';
     return 0;
 }
 

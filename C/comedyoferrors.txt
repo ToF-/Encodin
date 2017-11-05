@@ -1,4 +1,11 @@
 AAB
 0�1A1B
 ----
-
+cast (char) to count+'0' : nope
+btw count should be set to 0 again when char change
+Q: should count start at 1 ?
+----
+write count and char only when count > 0
+AAA
+2A2A
+----
