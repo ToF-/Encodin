@@ -43,6 +43,11 @@ int encode(char *srce, char *dest) {
     char count;
     while(*srce != '\n') {
         if (*srce == last) {
+            if(count == 9) {
+                *dest++ = count + '0';
+                *dest++ = last;
+                count = 1;
+            }
             count++;
         } else {
             last = *srce;
