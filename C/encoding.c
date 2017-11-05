@@ -59,8 +59,10 @@ int encode(char *srce, char *dest) {
         count++;
         srce++;
     }
-    *dest++ = count + '0';
-    *dest++ = last;
+    if (count > 0) {
+        *dest++ = count + '0';
+        *dest++ = last;
+    }
     *dest++ = '\n';
     *dest++ = '\0';
     return 0;

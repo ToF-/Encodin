@@ -41,3 +41,5 @@ A
 refactoring if statement broke the program
 ----
 some garbage in the dest, put a \0 in the end
+----
+count only if more than 0 chars in input
