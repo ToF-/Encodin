@@ -1,4 +1,3 @@
-module Encoding where
 import Data.Char (intToDigit,digitToInt)
 import Data.List (group)
 
@@ -20,3 +19,4 @@ encode = enclose Out . concatMap run_length . group
     enclose In  ('1':c:s) = c : enclose In s 
     enclose In  s         = '1' : enclose Out s
 
+main = process

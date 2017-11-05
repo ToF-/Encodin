@@ -1,15 +1,29 @@
 import Test.Hspec
 import Encoding
 
-main = hspec $ do
+main = specs
+
+specs = hspec $ do
     describe "encode" $ do
-        it "should encode a 2 to 9 chars sequence" $ do
-            encode "AAAA"  `shouldBe` "4A"
-        it "should encode a 10 to x chars sequence" $ do
-            encode "AAAAAAAAAAAA" `shouldBe` "9A3A"
+        describe "should encode" $ do
+            it "a simple sequence" $ do
+                encode "AAA"  `shouldBe` "3A"
+                encode "BBBB" `shouldBe` "4B"
 
-        it "should encode unique chars between 1s" $ do
-            encode "ABC"  `shouldBe` "1ABC1"
+            it "a sequence of lenght > 9" $ do
+                encode "CCCCCCCCCCCCC" `shouldBe` "9C4C"
 
-        it "should encode unique 1 as escaped" $ do
-            encode "1A" `shouldBe` "111A1"
+            it "sequences of distinct chars" $ do
+                encode "DDDDDEE" `shouldBe` "5D2E"
+
+        describe "should enclose" $ do
+            it "a sequence of one unique char" $ do
+                encode "F" `shouldBe` "1F1" 
+                encode "G" `shouldBe` "1G1"
+            it "a sequence of unique chars" $ do
+                encode "HIJ" `shouldBe` "1HIJ1"
+                encode "KLMMM" `shouldBe` "1KL13M"
+
+        describe "should escape" $ do
+            it "a 1 in a singleton" $ do
+                encode "1" `shouldBe` "1111"
