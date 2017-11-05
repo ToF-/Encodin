@@ -25,4 +25,6 @@ AAAAAAAAAAA
 9A3A
 AAAAAAAAAA
 9A2A
+----
+reset count to 0 instead of 1
 

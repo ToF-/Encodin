@@ -46,7 +46,7 @@ int encode(char *srce, char *dest) {
             if(count == 9) {
                 *dest++ = count + '0';
                 *dest++ = last;
-                count = 1;
+                count = 0;
             }
             count++;
         } else {
