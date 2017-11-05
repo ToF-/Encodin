@@ -1,0 +1,58 @@
+
+c = incoming char
+l = last char read
+ptr = char * beginning of sequence
+n = size of sequence
+t = type of sequence E=enclosing R=runlength
+
+examples :
+ A
+  c  l  ptr  n  t
+  A  _  000  1  E
+  \n A  000  1  E
+\n means end of line 
+output enclosing from 000 for 1 (A) = 1A1
+
+ AA
+  c  l  ptr  n  t
+  A  _  000  1  E
+  A  A  000  2  R
+equal char means we have a runlength
+  \n A  000  2  R
+diff char means we have to print what we have
+output runlength 2 of 000 for 2 (AA) = AA
+
+ AAB
+  c  l  ptr  n  t
+  A  _  000  1  E
+  A  A  000  2  R
+equal char means we have a runlength
+  B  A  
+diff char means we have to print what we have
+output runlength 2 of 000 for 2 (AA) = AA
+        002 1  E
+a new sequence is starting at 002, it's enclosing a priori
+  \n B  002 1  E
+\n means end of line
+output enclosing from 002 for 1 (B) = 1B1
+
+ABB
+  c  l  ptr  n  t
+  A  _  000  1  E
+  B  A  000  2  E
+  B  B
+equal char means we have a runlenght when we thought we had enclosing
+output enclosing from 000 for (2-1) = 1A1
+        001  2  R
+ \n  B  
+\n means end of line
+output runlength 2 of 001 for 2 (BB)
+
+
+    c = *srce
+    if c == \n
+        break
+    else if c == l
+        n++
+        t = RL
+    
