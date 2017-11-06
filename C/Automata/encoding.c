@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 #define ENCL 0
-#define SEQU 1
+#define RUNL 1
 
 void output_enclosure(char *sequ, size_t size) {
     if (size <= 0)
@@ -43,7 +42,7 @@ void encode(char *srce) {
                 output_enclosure(sequ, size-1);
                 sequ--;
                 size=1;
-                type = SEQU;
+                type = RUNL;
             }
             else if (size == 9) {
                 output_runlength(last, size);
@@ -54,7 +53,7 @@ void encode(char *srce) {
                 continue;
             }
         } else {
-            if (type == SEQU) {
+            if (type == RUNL) {
                 output_runlength(last,size);
                 sequ = srce;
                 size = 0;
@@ -81,6 +80,5 @@ void process() {
 
 int main(int argc, char **argv) {
     process();
-    // return run_all_tests();
     return 0;
 }
